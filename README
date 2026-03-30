@@ -1,0 +1,53 @@
+# 🎂 Birthday Surprise Project 💖
+
+This is a small web-based surprise created with love ❤️
+
+## 💡 About
+
+A personalized birthday surprise website that includes:
+
+* 🔐 Password protection
+* 💌 Emotional message
+* 📸 Photo memories
+* 🎵 Background music
+* 🎥 Special video
+* 💫 Smooth animations & slow reveal
+
+## 🎁 Purpose
+
+This project is created to make a special person feel happy and loved on their birthday.
+
+## 📁 Project Structure
+
+```
+birthday-surprise/
+│
+├── index.html
+├── README.md
+├── photos/
+├── songs/
+└── videos/
+```
+
+## 🔑 How to Use
+
+1. Open the website
+2. Enter the password
+3. Enjoy the surprise 💖
+
+## 💖 Note
+
+This project is made with pure intention and emotions.
+Every detail is carefully designed to create a memorable moment.
+
+---
+
+✨ Made with love
+
+💡 OPTIONAL (PERSONAL TOUCH)
+
+You can add:
+
+👉 His nickname
+👉 Special date
+👉 Small secret line
