@@ -4,6 +4,7 @@
     <title>For Lambuuuu ❤️</title>
 
     <style>
+           <div class="big-heart"> </div>
             body {
             margin: 0;
             background: black;
@@ -104,6 +105,44 @@
         box-shadow: 0 0 8px rgba(255, 107, 129, 0.4);
     }
 }
+.big-heart {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+    width: 120px;
+    height: 120px;
+    background: #ff4d6d;
+    box-shadow: 0 0 20px #ff4d6d, 0 0 40px #ff4d6d;
+    animation: pulse 2s infinite;
+    z-index: 0;
+}
+
+.big-heart::before,
+.big-heart::after {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    background: #ff4d6d;
+    border-radius: 50%;
+}
+
+.big-heart::before {
+    top: -60px;
+    left: 0;
+}
+
+.big-heart::after {
+    left: 60px;
+    top: 0;
+}
+
+@keyframes pulse {
+    0% { transform: translate(-50%, -50%) scale(1) rotate(-45deg); }
+    50% { transform: translate(-50%, -50%) scale(1.1) rotate(-45deg); }
+    100% { transform: translate(-50%, -50%) scale(1) rotate(-45deg); }
+}
 
 
     </style>
@@ -128,24 +167,26 @@
     <!-- Step 2 -->
     <div id="step2" class="hidden">
         <p>
-        hlo! happy brdy to most important person in my life... 💖<br><br>
-        on this special day everyone celebrates you as a good human,
-        but I celebrate your parents for giving such a beautiful person.
-        when it comes to elders and womens u respects a lot and 
-        always keeps ur inner child alive because it makes other also happy.. 💫<br><br>
-        thank you for tolerating me and my mood swings 😭❤️<br><br>
-        I will always be there for you no matter what 🫶<br><br>
+        hlo! happy brdy to the most important person in my life!💖<br><br>
+        On this special day everyone celebrates you as a wonderful human being..
+        but I celebrate your parents for bringing such a amazing person into this world.
+        The way u respect elders and women ,and still keep ur inner child alive-
+        its something truly beautiful.u spread happiness without even trying.💫<br><br>
+        thank you for always being patient with me and handling all my mood swings 😭❤️<br><br>
+        No matter what, I will always be there for you  🫶<br><br>
         HAPPY BIRTHDAY LAMBUUUUUU ❤️
         </p>
     </div>
 
     <!-- Step 3 -->
-<div id="step3" class="hidden">
-    <img src="photo1.jpg">
-    <img src="photo2.jpg">
-    <img src="photo3.jpg">
-    <img src="photo4.jpg">
+<div  class="gallery">
+        <img src="photo1.jpg">
+        <img src="photo2.jpg">
+        <img src="photo3.jpg">
+        <img src="photo4.jpg">
+        
 </div>
+
 
     <!-- Step 4 -->
     <div class="big-heart"></div>
@@ -159,7 +200,9 @@
     <!-- Step 6 -->
     <div id="step6" class="hidden">
         <h2>Secret Message 🔐</h2>
-        <p>ONCE AGAIN HAPPPPPYYYYYYY BIRTHDAYYYYYYY AMOGHAAAAAAAA(HAPPY 21 DEAR!) 💖</p>
+        <p>I tried to add including the photos and video of things 
+            u love nd prioritized in ur lyf .. 
+            ONCE AGAIN HAPPPPPYYYYYYY BIRTHDAYYYYYYY AMOGHAAAAAAAA(HAPPY 21 DEAR!) 💖</p>
     </div>
 
 </div>
@@ -167,6 +210,8 @@
 <!-- 🎵 MUSIC -->
 <audio id="music" loop>
     <source src="song.mp3">
+    <audio autoplay loop>
+</audio>
 
 </audio>
 
