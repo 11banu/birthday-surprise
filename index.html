@@ -1,225 +1,130 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-    <title>For Lambuuuu ❤️</title>
+<title>For Lambuuuu ❤️</title>
 
-    <style>
-           <div class="big-heart"> </div>
-            body {
-            margin: 0;
-            background: black;
-            color: white;
-            text-align: center;
-            font-family: Arial;
-            overflow-y: auto;
-        }
+<style>
+body {
+    margin: 0;
+    background: black;
+    color: white;
+    text-align: center;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-        .hidden {
-            display: none;
-        }
+/* hide */
+.hidden { display: none; }
 
-        button {
-            padding: 10px 20px;
-            background: red;
-            color: white;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-        }
+/* fade */
+.fade { opacity: 0; transition: 1.5s; }
+.show { opacity: 1; }
 
-        img {
-            width: 200px;
-            margin: 10px;
-            border-radius: 15px;
-        }
-
-        /* ❤️ Floating hearts */
-        .heart {
-            position: fixed;
-            color: red;
-            font-size: 20px;
-            animation: float 5s linear infinite;
-        }
-
-        @keyframes float {
-            0% {transform: translateY(100vh);}
-            100% {transform: translateY(-10vh);}
-        }style>
-    body {
-        background: black;
-        color: white;
-    }
-
-    .hidden {
-        display: none;
-    }
-
-    /* 👇 ADD BELOW THIS LINE */
-
-    .big-heart {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    margin: 100px auto;
-    transform: rotate(-45deg);
-    background: #ff6b81; /* soft pink */
+/* button */
+button {
+    padding: 12px 25px;
+    background: linear-gradient(45deg,#ff4d6d,#ff758c);
+    color: white;
+    border: none;
     border-radius: 20px;
-    animation: softBeat 2s infinite ease-in-out;
+    cursor: pointer;
 }
 
-/* top curves */
-.big-heart::before,
-.big-heart::after {
-    content: "";
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    background: #ff6b81;
-    border-radius: 50%;
+/* image */
+img {
+    width: 80%;
+    max-width: 300px;
+    border-radius: 15px;
 }
 
-/* left */
-.big-heart::before {
-    top: -60px;
-    left: 0;
+/* snapchat typing cursor */
+#chatText::after {
+    content: "|";
+    animation: blink 1s infinite;
+}
+@keyframes blink {
+    50% { opacity: 0; }
 }
 
-/* right */
-.big-heart::after {
-    left: 60px;
-    top: 0;
-}
-
-/* 🌸 soft glow + gentle beat */
-@keyframes softBeat {
-    0% {
-        transform: rotate(-45deg) scale(1);
-        box-shadow: 0 0 8px rgba(255, 107, 129, 0.4);
-    }
-    50% {
-        transform: rotate(-45deg) scale(1.03);
-        box-shadow: 0 0 15px rgba(255, 107, 129, 0.6);
-    }
-    100% {
-        transform: rotate(-45deg) scale(1);
-        box-shadow: 0 0 8px rgba(255, 107, 129, 0.4);
-    }
-}
-.big-heart {
+/* floating hearts */
+.heart {
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(-45deg);
-    width: 120px;
-    height: 120px;
-    background: #ff4d6d;
-    box-shadow: 0 0 20px #ff4d6d, 0 0 40px #ff4d6d;
-    animation: pulse 2s infinite;
-    z-index: 0;
+    color: #ff4d6d;
+    animation: float 6s linear infinite;
+}
+@keyframes float {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); opacity: 0; }
 }
 
-.big-heart::before,
-.big-heart::after {
-    content: '';
-    position: absolute;
-    width: 120px;
-    height: 120px;
-    background: #ff4d6d;
-    border-radius: 50%;
-}
-
-.big-heart::before {
-    top: -60px;
-    left: 0;
-}
-
-.big-heart::after {
-    left: 60px;
+/* canvas heart */
+#heartCanvas {
+    position: fixed;
     top: 0;
+    left: 0;
+    z-index: -1;
 }
-
-@keyframes pulse {
-    0% { transform: translate(-50%, -50%) scale(1) rotate(-45deg); }
-    50% { transform: translate(-50%, -50%) scale(1.1) rotate(-45deg); }
-    100% { transform: translate(-50%, -50%) scale(1) rotate(-45deg); }
-}
-
-
-    </style>
+</style>
 </head>
 
 <body>
 
-<!-- 🔒 PASSWORD SCREEN -->
+<canvas id="heartCanvas"></canvas>
+
+<!-- PASSWORD -->
 <div id="lock">
-    <h2>Enter Password 💖</h2>
-    <input type="password" id="pass">
-    <br><br>
-    <button onclick="unlock()">Unlock ❤️</button>
+<h2>Enter Password 💖</h2>
+<input type="password" id="pass"><br><br>
+<button onclick="unlock()">Unlock ❤️</button>
 </div>
 
-<!-- 🎁 MAIN CONTENT -->
+<!-- MAIN -->
 <div id="main" class="hidden">
 
-    <!-- Step 1 -->
-    <h1 id="step1">Happy Birthday Lambuuuu ❤️</h1>
+<h1 class="fade" id="step1">Happy Birthday Lambuuuu ❤️</h1>
 
-    <!-- Step 2 -->
-    <div id="step2" class="hidden">
-        <p>
-        hlo! happy brdy to the most important person in my life!💖<br><br>
-        On this special day everyone celebrates you as a wonderful human being..
-        but I celebrate your parents for bringing such a amazing person into this world.
-        The way u respect elders and women ,and still keep ur inner child alive-
-        its something truly beautiful.u spread happiness without even trying.💫<br><br>
-        thank you for always being patient with me and handling all my mood swings 😭❤️<br><br>
-        No matter what, I will always be there for you  🫶<br><br>
-        HAPPY BIRTHDAY LAMBUUUUUU ❤️
-        </p>
-    </div>
-
-    <!-- Step 3 -->
-<div  class="gallery">
-        <img src="photo1.jpg">
-        <img src="photo2.jpg">
-        <img src="photo3.jpg">
-        <img src="photo4.jpg">
-        
+<!-- typing message -->
+<div id="step2" class="fade">
+<p id="chatText"></p>
 </div>
 
+<!-- slideshow -->
+<div id="step3" class="fade">
+<img id="slide" src="photo1.jpg"><br>
+<button onclick="nextSlide()">Next 💙</button>
+</div>
 
-    <!-- Step 4 -->
-    <div class="big-heart"></div>
+<!-- video -->
+<div id="step4" class="fade">
+<video width="300" controls>
+<source src="video.mp4">
+</video>
+</div>
 
-    <!-- Step 5 -->
-    <div id="step5" class="hidden">
-        <video width="300" controls>
-            <source src="video.mp4">
-    </div>
-
-    <!-- Step 6 -->
-    <div id="step6" class="hidden">
-        <h2>Secret Message 🔐</h2>
-        <p>I tried to add including the photos and video of things 
-            u love nd prioritized in ur lyf .. 
-            ONCE AGAIN HAPPPPPYYYYYYY BIRTHDAYYYYYYY AMOGHAAAAAAAA(HAPPY 21 DEAR!) 💖</p>
-    </div>
+<!-- final -->
+<div id="step5" class="fade">
+<h2>If you stayed till here… 💙</h2>
+<p>Thank you for being in my life ❤️</p>
+</div>
 
 </div>
 
-<!-- 🎵 MUSIC -->
+<!-- music -->
 <audio id="music" loop>
-    <source src="song.mp3">
-    <audio autoplay loop>
-</audio>
-
+<source src="song.mp3">
 </audio>
 
 <script>
+/* unlock */
+
 function unlock() {
+
+    console.log("unlock clicked");  // 👈 ADD HERE
+
     let p = document.getElementById("pass").value;
 
     if (p === "lambuuu") {
+
+        console.log("correct password");  // 👈 ADD HERE
 
         document.getElementById("lock").style.display = "none";
         document.getElementById("main").classList.remove("hidden");
@@ -228,64 +133,203 @@ function unlock() {
 
         startHearts();
         startSteps();
-
     } else {
         alert("Wrong password ❌");
     }
 }
 
-/* 💖 Floating hearts */
-function startHearts() {
-    setInterval(() => {
-        let heart = document.createElement("div");
-        heart.className = "heart";
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        document.body.appendChild(heart);
+/* steps */
 
-        setTimeout(() => heart.remove(), 5000);
-    }, 500);
+
+function startSteps(){
+
+    setTimeout(()=>{
+        document.getElementById("step1").classList.add("show");
+    },1000);
+
+    setTimeout(()=>{
+        snapchatTyping();
+    },4000);
+
+    setTimeout(()=>{
+        document.getElementById("step3").classList.add("show");
+    },9000);
+
+    setTimeout(()=>{
+        document.getElementById("step4").classList.add("show");
+    },13000);
+
+    setTimeout(()=>{
+        document.getElementById("step5").classList.add("show");
+    },17000);
 }
 
-/* 🎬 Step by step animation */
-function startSteps() {
+/* snapchat typing */
+function snapchatTyping() {
 
-    setTimeout(() => {
-        document.getElementById("step2").classList.remove("hidden");
-    }, 2000);
+     let text = `I didn’t really know how to say all this in person…
 
-    setTimeout(() => {
-        document.getElementById("step3").classList.remove("hidden");
-    }, 5000);
+So I made this 💙
 
-    setTimeout(() => {
-        document.getElementById("step4").classList.remove("hidden");
-    }, 8000);
+Happy Birthday.
 
-    setTimeout(() => {
-        document.getElementById("step5").classList.remove("hidden");
-    }, 11000);
+I know a lot of people will wish you today,
+but I just wanted to say something a little different.
 
-    setTimeout(() => {
-        document.getElementById("step6").classList.remove("hidden");
-    }, 14000);
-}
+but I celebrate your parents for bringing such a amazing person into this world.
 
-function typeText(elementId, text, speed) {
-    let i = 0;
-    let el = document.getElementById(elementId);
+You’re genuinely a really good person.
+
+The way you respect people,
+the way you stay calm,
+and still keep that simple, happy side in you…
+it’s something rare.
+
+Being around you feels easy.
+You don’t even try, but you make things lighter.
+
+And honestly…
+thank you for being patient with me,
+for understanding me even when I’m not at my best.
+
+It means more than I say.
+
+I don’t know what this is or where it goes…
+but I just wanted you to know,
+you matter to me 💙
+
+Not just today.
+Always.
+
+Note: maybe send me your HD pics every year…
+so I can keep making little surprises like this for you 😌💙
+
+And if this made you smile even a little…
+that’s already enough for me 💙`;
+
+    let el = document.getElementById("chatText");
     el.innerHTML = "";
+    document.getElementById("step2").classList.add("show");
 
-    function typing() {
+    let i = 0;
+
+    function type() {
         if (i < text.length) {
-            el.innerHTML += text.charAt(i);
+            if (text[i] === "\n") {
+                el.innerHTML += "<br>";
+            } else {
+                el.innerHTML += text[i];
+            }
             i++;
-            setTimeout(typing, speed);
+            setTimeout(type, 35);
         }
     }
-    typing();
+
+    type();
 }
+
+
+/* slideshow */
+let images=["photo1.jpg","photo2.jpg","photo3.jpg","photo4.jpg"];
+let index=0;
+
+function nextSlide(){
+    index=(index+1)%images.length;
+    document.getElementById("slide").src=images[index];
+}
+
+/* floating hearts */
+function startHearts(){
+    setInterval(()=>{
+        let h=document.createElement("div");
+        h.className="heart";
+        h.innerHTML="❤️";
+        h.style.left=Math.random()*100+"vw";
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(),6000);
+    },300);
+}
+
+/* ❤️ sin/cos heart */
+const canvas=document.getElementById("heartCanvas");
+const ctx=canvas.getContext("2d");
+
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+
+ctx.translate(canvas.width/2,canvas.height/2);
+
+function heart(t){
+    let x=16*Math.pow(Math.sin(t),3);
+    let y=-(13*Math.cos(t)-5*Math.cos(2*t)-2*Math.cos(3*t)-Math.cos(4*t));
+    return [x*12,y*12];
+}
+
+let pts=[];
+for(let t=0;t<Math.PI*2;t+=0.2){
+    pts.push(heart(t));
+}
+let scale = 1;
+let growing = true;
+function draw(){
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.translate(canvas.width/2, canvas.height/2);
+
+    // 💓 subtle heartbeat
+    if(growing){
+        scale += 0.004;
+        if(scale > 1.04) growing = false;
+    } else {
+        scale -= 0.004;
+        if(scale < 1) growing = true;
+    }
+
+    // 🧠 IMPORTANT: smooth edges
+    ctx.lineJoin = "round";
+    ctx.lineCap = "round";
+
+    // ✨ LAYER 1 → glow (behind)
+    ctx.beginPath();
+    for(let t=0; t<Math.PI*2; t+=0.025){
+        let x = 16 * Math.pow(Math.sin(t),3);
+        let y = -(13*Math.cos(t) - 5*Math.cos(2*t) - 2*Math.cos(3*t) - Math.cos(4*t));
+
+        x *= 11 * scale;
+        y *= 11 * scale;
+
+        if(t === 0) ctx.moveTo(x,y);
+        else ctx.lineTo(x,y);
+    }
+
+    ctx.strokeStyle = "#ff4d6d";
+    ctx.lineWidth = 3;         // glow layer thicker
+    ctx.globalAlpha = 0.2;     // soft glow
+    ctx.stroke();
+
+    // ✨ LAYER 2 → sharp line (front)
+    ctx.beginPath();
+    for(let t=0; t<Math.PI*2; t+=0.025){
+        let x = 16 * Math.pow(Math.sin(t),3);
+        let y = -(13*Math.cos(t) - 5*Math.cos(2*t) - 2*Math.cos(3*t) - Math.cos(4*t));
+
+        x *= 11 * scale;
+        y *= 11 * scale;
+
+        if(t === 0) ctx.moveTo(x,y);
+        else ctx.lineTo(x,y);
+    }
+
+    ctx.strokeStyle = "#ff6b81";
+    ctx.lineWidth = 1;         // 👈 clean thin edge
+    ctx.globalAlpha = 1;
+    ctx.stroke();
+}
+    
+setInterval(draw,100);
 </script>
 
 </body>
-</html> 
+</html>
